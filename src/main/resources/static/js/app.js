@@ -34,12 +34,15 @@ class App {
     }
 }
 
-class Customer {
-    constructor(id, fullName, email, phone, province) {
+class Staff {
+    constructor(id, fullName, phone, identityCard, dob, email, address, station){
         this.id = id;
         this.fullName = fullName;
-        this.email = email;
         this.phone = phone;
-        this.province = province;
+        this.identityCard = identityCard;
+        this.dob = dob;
+        this.email = email;
+        this.address = address;
+        this.station = station;
     }
 }

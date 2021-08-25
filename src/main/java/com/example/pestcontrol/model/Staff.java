@@ -19,7 +19,7 @@ public class Staff {
 
     private String fullName;
 
-    private String phoneNumber;
+    private String phone;
     private String identityCard;
     private Date dob;
     private String email;

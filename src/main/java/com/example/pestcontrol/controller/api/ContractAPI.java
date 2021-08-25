@@ -1,7 +1,7 @@
 package com.example.pestcontrol.controller.api;
 
 import com.example.pestcontrol.model.Contract;
-import com.example.pestcontrol.service.Contract.ContractService;
+import com.example.pestcontrol.service.Contract.IContractService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 public class ContractAPI {
-    private final ContractService contractService;
+    private final IContractService contractService;
 
     @GetMapping
     public ResponseEntity<Iterable<Contract>> getAllContract() {

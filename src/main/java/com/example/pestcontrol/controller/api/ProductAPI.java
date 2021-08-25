@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1/customer")
+@RequestMapping("/v1/product")
 @RequiredArgsConstructor
-public class CustomerAPI {
+public class ProductAPI {
     private final ICustomerService customerService;
 
     @GetMapping()
-    public ResponseEntity<Iterable<Customer>> getAllCustomer(){
+    public ResponseEntity<Iterable<Customer>> getAllCustomer() {
         Iterable<Customer> customers = customerService.findAll();
-        if(customers == null){
+        if (customers == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(customers, HttpStatus.OK);
@@ -26,9 +26,9 @@ public class CustomerAPI {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id){
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
         Optional<Customer> customer = customerService.findById(id);
-        if(!customer.isPresent()){
+        if (!customer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(customer.get(), HttpStatus.OK);
@@ -36,15 +36,14 @@ public class CustomerAPI {
     }
 
     @PostMapping()
-//   Nếu save không được thì bỏ @RequestBody vào Khánh Said
-    public ResponseEntity<Customer> saveCustomer(Customer customer){
+    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer) {
         return new ResponseEntity<>(customerService.save(customer), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> deleteCustomer(@PathVariable Long id){
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable Long id) {
         Optional<Customer> customer = customerService.findById(id);
-        if(!customer.isPresent()){
+        if (!customer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             customerService.remove(id);
